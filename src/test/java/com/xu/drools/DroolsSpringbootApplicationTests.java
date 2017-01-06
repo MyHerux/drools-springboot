@@ -1,4 +1,4 @@
-package com.xu;
+package com.xu.drools;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

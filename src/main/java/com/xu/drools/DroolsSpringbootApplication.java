@@ -1,4 +1,4 @@
-package com.xu;
+package com.xu.drools;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
