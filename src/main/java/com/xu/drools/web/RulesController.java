@@ -22,3 +22,4 @@ public class RulesController {
         return rulesService.getRulesWrite(id);
     }
 }
+
