@@ -3,11 +3,21 @@ package com.xu.drools.bean;
 
 import java.io.Serializable;
 
-public class Person implements Serializable {
+public class Person implements Serializable,BaseBean {
 
     private static final long serialVersionUID = 1L;
 
     private Integer age;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private String name;
     private String desc;
 
     public Integer getAge() {
@@ -24,5 +34,10 @@ public class Person implements Serializable {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    @Override
+    public String getOut() {
+        return "{\"age\"="+age+",\"desc\"="+desc+"}";
     }
 }

@@ -2,6 +2,7 @@ package com.xu.drools.service;
 
 
 import com.xu.drools.bean.Message;
+import com.xu.drools.bean.Person;
 import com.xu.drools.bean.Rules;
 import com.xu.drools.dao.RulesDao;
 import org.kie.api.KieBase;
@@ -45,5 +46,30 @@ public class RulesService {
         ksession.insert(message);
         ksession.fireAllRules();
         return "ok";
+    }
+
+    public String getRulesWrite(Integer id, Person t) {
+        String rules = "";
+        Rules ru = rulesDao.getById(id);
+        if (ru != null && ru.getRules() != null) {
+            rules = ru.getRules();
+        }
+
+        KieServices kieServices = KieServices.Factory.get();
+        KieFileSystem kfs = kieServices.newKieFileSystem();
+        kfs.write("src/main/resources/rules/rules.drl", rules.getBytes());
+        KieBuilder kieBuilder = kieServices.newKieBuilder(kfs).buildAll();
+        Results results = kieBuilder.getResults();
+        if (results.hasMessages(org.kie.api.builder.Message.Level.ERROR)) {
+            System.out.println(results.getMessages());
+            throw new IllegalStateException("### errors ###");
+        }
+        KieContainer kieContainer = kieServices.newKieContainer(kieServices.getRepository().getDefaultReleaseId());
+        KieBase kieBase = kieContainer.getKieBase();
+        KieSession ksession = kieBase.newKieSession();
+
+        ksession.insert(t);
+        ksession.fireAllRules();
+        return t.getOut();
     }
 }
