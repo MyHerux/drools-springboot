@@ -28,7 +28,7 @@ public class RulesController {
 
     @RequestMapping(value = "/getRule2", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String getRule2(@RequestParam Integer id) {
-        Person p = new Person();
+        Person p = new Person(11,"","");
         p.setAge(18);
         return rulesService.getRulesWrite(id, p);
     }
@@ -54,7 +54,7 @@ public class RulesController {
 
     @RequestMapping(value = "/getRule5", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String getRule5(HttpServletRequest request) {
-        Person p = new Person();
+        Person p = new Person(14,"","");
         p.setAge(18);
         p.setName("Tony");
         return ruleTableService.getRuleTable2(p);

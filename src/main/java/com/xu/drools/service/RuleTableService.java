@@ -34,7 +34,7 @@ public class RuleTableService {
             KieServices ks = KieServices.Factory.get();
             KieContainer kContainer = ks.getKieClasspathContainer();
             KieSession kSession = kContainer.newKieSession("tablesKiession");
-            Person person = new Person();
+            Person person = new Person(30,"Tony","11");
             person.setName("Tony");
             kSession.insert(person);
             kSession.fireAllRules();

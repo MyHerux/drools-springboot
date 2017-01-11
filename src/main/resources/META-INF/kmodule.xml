@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://www.drools.org/xsd/kmodule">
+
+    <kbase name="rule2KB" packages="com.xu.drools.rule.rule2">
+        <ksession name="rule2KS"/>
+    </kbase>
+</kmodule>

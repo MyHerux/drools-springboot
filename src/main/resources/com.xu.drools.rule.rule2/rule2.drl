@@ -1,0 +1,12 @@
+package com.xu.drools;
+import com.xu.drools.bean.Person;
+rule "2"
+	when
+        $p : Person(age > 30);
+    then
+		System.out.println("hello, young xu2!");
+end
+
+query "people2"
+    person : Person( age > 30 )
+end

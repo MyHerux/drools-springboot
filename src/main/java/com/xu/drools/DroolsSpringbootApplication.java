@@ -13,4 +13,5 @@ public class DroolsSpringbootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DroolsSpringbootApplication.class, args);
 	}
+
 }
