@@ -106,7 +106,7 @@
   - 属性部分：定义当前规则执行的一些属性等，比如是否可被重复执行、过期时间、生效时间等。
     `activation-group` `agenda-group` `auto-focus` `date-effective` `date-expires` `dialect` `duration` `duration-value` `enabled` `lock-on-active` `no-loop` `ruleflow-group` `salience`
 
-    ![规则属性][http://of0qa2hzs.bkt.clouddn.com/1484118982%281%29.jpg]
+    ![](http://of0qa2hzs.bkt.clouddn.com/1484118982%281%29.jpg)
 
     - salience
 
