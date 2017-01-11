@@ -10,7 +10,7 @@ import org.kie.api.runtime.rule.QueryResultsRow;
 /**
  * Created by xu on 2017/1/11.
  */
-public class test {
+public class rule2 {
 
     public static void main(final String[] args) {
         KieContainer kc = KieServices.Factory.get().getKieClasspathContainer();
@@ -18,7 +18,7 @@ public class test {
         execute(kc);
     }
 
-    public static void execute(KieContainer kc) {
+    private static void execute(KieContainer kc) {
         KieSession ksession = kc.newKieSession("rule2KS");
 
         Person p1 = new Person(35, "xu", "handsome");
