@@ -1,3 +1,5 @@
+[toc]
+
 ## Drools语法-Language
 ### 关键词
   - Hard keywords(Cannot use any):
