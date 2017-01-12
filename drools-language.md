@@ -1,3 +1,4 @@
+[toc]
 ## Drools语法-Language
 ### 关键词
   - Hard keywords(Cannot use any):
@@ -112,7 +113,7 @@
   一个规则可以包含三个部分：属性部分,条件部分：即`LHS`,结果部分：即`RHS`.
   ![](http://of0qa2hzs.bkt.clouddn.com/rule.jpg)
 
-#### 属性部分
+#### 属性部分-Attributes
 
   定义当前规则执行的一些属性等，比如是否可被重复执行、过期时间、生效时间等。
     `activation-group` `agenda-group` `auto-focus` `date-effective` `date-expires` `dialect` `duration` `duration-value` `enabled` `lock-on-active` `no-loop` `ruleflow-group` `salience`
@@ -212,9 +213,9 @@
 
       持续时间指示规则将在指定的持续时间之后触发，如果它仍然是true.
 
-#### 条件部分
+#### 条件部分-LHS
 
-  即`LHS`，定义当前规则的条件，如`when Message()`; 判断当前workingMemory中是否存在Message对象。
+  定义当前规则的条件，如`when Message()`; 判断当前workingMemory中是否存在Message对象。
 
   `Left Hand Side`（`LHS`）是规则的条件部分的公共名称。它由零个或多个条件元素组成。
   如果LHS为空，它将被认为是一个条件元素，它总是为真，并且当创建一个新的WorkingMemory会话时，它将被激活一次。
@@ -282,9 +283,9 @@
 
     不存在，检查工作存储器中是否存在某物。认为“`not`”意味着“`there must be none of...`”。
 
-#### 结果部分
+#### 结果部分-RHS
 
-  即`RHS`，这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。
+  这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。
 
   `Right Hand Side`（`RHS`）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是`原子`的性质 - “`when this, then do this`”，而不是“`when this, maybe do this`”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 `RHS`的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。
 
@@ -305,7 +306,8 @@
 
       删除
 
-  一些内置的method。
+一些内置的method。
+
   - drools.halt()
 
     调用`drools.halt（）`立即终止规则执行。这是需要将控制权返回到当前会话使用`fireUntilHalt（）`的点。
