@@ -2,7 +2,15 @@
 <kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://www.drools.org/xsd/kmodule">
 
+    <kbase name="rule1KB" packages="com.xu.drools.rule.rule1">
+        <ksession name="rule1KS"/>
+    </kbase>
+
     <kbase name="rule2KB" packages="com.xu.drools.rule.rule2">
         <ksession name="rule2KS"/>
+    </kbase>
+
+    <kbase name="HonestPoliticianKB" packages="com.xu.drools.rule.honestpolitician">
+        <ksession name="HonestPoliticianKS"/>
     </kbase>
 </kmodule>

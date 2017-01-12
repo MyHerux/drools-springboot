@@ -4,12 +4,9 @@ spring:
             url: jdbc:mysql://localhost:3306/xus?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&noAccessToProcedureBodies=true
             username: root
             password: 4321
-            # druid
             type: com.alibaba.druid.pool.DruidDataSource
-            # 初始化大小，最小，最大
             initialSize: 5
             minIdle: 5
             maxActive: 50
-            # 配置获取连接等待超时的时间
             maxWait: 1000
             filters: stat,wall,log4j

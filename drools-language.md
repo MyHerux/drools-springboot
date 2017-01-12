@@ -1,5 +1,3 @@
-[toc]
-
 ## Drools语法-Language
 ### 关键词
   - Hard keywords(Cannot use any):
@@ -247,9 +245,9 @@
 
       运算符`contains`用于检查作为Collection或elements的字段是否包含指定的值.
       ```
-        Cheese( name contains "tilto" )
-        Person( fullName contains "Jr" )
-        String( this contains "foo" )
+      Cheese( name contains "tilto" )
+      Person( fullName contains "Jr" )
+      String( this contains "foo" )
       ```
   - not contains
 
@@ -259,7 +257,7 @@
 
       运算符`memberOf`用于检查字段是否是集合的成员或元素;该集合必须是一个变量。
       ```
-        CheeseCounter( cheese memberOf $matureCheeses )
+      CheeseCounter( cheese memberOf $matureCheeses )
       ```
   - not memberOf
 
@@ -269,24 +267,37 @@
 
       正则表达式匹配，与java不同的是，不用考虑'/'的转义问题
       ```
-        Cheese( type matches "(Buffalo)?\\S*Mozarella" )
+      Cheese( type matches "(Buffalo)?\\S*Mozarella" )
       ```
   - not matches
 
-        和`matches`相反
+      和`matches`相反
+
+  其他条件元素：
+  - exists
+
+    存在。检查Working Memory是否存在某物。使用模式`exists`，则规则将只激活最多一次，而不管在工作存储器中存在与存在模式中的条件匹配的数据量
+
+  - not
+
+    不存在，检查工作存储器中是否存在某物。认为“`not`”意味着“`there must be none of...`”。
 
 #### 结果部分
 
   即`RHS`，这里可以写普通java代码，即当前规则条件满足后执行的操作，可以直接调用Fact对象的方法来操作应用。
 
-  `Right Hand Side`（`RHS`）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是`原子`的性质 - “`when this, then do this`”，而不是“`when this, maybe do this`”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 RHS的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。
+  `Right Hand Side`（`RHS`）是规则的结果或动作部分的通用名称;此部分应包含要执行的操作的列表。在规则的RHS中使用命令式或条件式代码是不好的做法;作为一个规则应该是`原子`的性质 - “`when this, then do this`”，而不是“`when this, maybe do this`”。规则的RHS部分也应该保持较小，从而保持声明性和可读性。如果你发现你需要在RHS中的命令式和/或条件代码，那么也许你应该把这个规则分成多个规则。 `RHS`的主要目的是插入，删除或修改工作存储器数据。为了协助，有一些方便的方法可以用来修改工作记忆;而不必首先引用工作内存实例。
 
   - update
 
       更新，告诉引擎对象已经改变（已经绑定到LHS上的某个东西），并且规则可能需要重新考虑。
-  - insert
+  - insert(new Something())
 
       插入，往当前`workingMemory`中插入一个新的Fact对象，会触发规则的再次执行，除非使用`no-loop`限定；
+
+  - insertLogical(new Something())
+
+      类似于`insert`，但是当没有更多的facts支持当前触发规则的真实性时，对象将被自动删除。
   - modify
 
       修改，与`update`语法不同，结果都是更新操作。该语言扩展提供了一种结构化的方法来更新事实。它将更新操作与一些setter调用相结合来更改对象的字段。
@@ -294,6 +305,19 @@
 
       删除
 
-#### 示例
+  一些内置的method。
+  - drools.halt()
 
-  -
+    调用`drools.halt（）`立即终止规则执行。这是需要将控制权返回到当前会话使用`fireUntilHalt（）`的点。
+  - drools.getWorkingMemory()
+
+    返回WorkingMemory对象.
+  - drools.setFocus( String s)
+
+    将焦点设置为指定的`agenda group`.
+  - drools.getRule().getName()
+
+    从规则的RHS调用，返回规则的名称。
+  - drools.getTuple()
+
+    返回与当前执行的规则匹配的`Tuple`，而drools.getActivation（）传递相应的激活。
