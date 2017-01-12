@@ -243,32 +243,32 @@
 
   - contains
 
-        运算符`contains`用于检查作为Collection或elements的字段是否包含指定的值.
-        ```
+      运算符`contains`用于检查作为Collection或elements的字段是否包含指定的值.
+      ```
         Cheese( name contains "tilto" )
         Person( fullName contains "Jr" )
         String( this contains "foo" )
-        ```
+      ```
   - not contains
 
-        和`contains`相反
+      和`contains`相反
 
   - memberOf
 
-        运算符`memberOf`用于检查字段是否是集合的成员或元素;该集合必须是一个变量。
-        ```
+      运算符`memberOf`用于检查字段是否是集合的成员或元素;该集合必须是一个变量。
+      ```
         CheeseCounter( cheese memberOf $matureCheeses )
-        ```
+      ```
   - not memberOf
 
-        和`memberOf`相反
+      和`memberOf`相反
 
   - matches
 
-        正则表达式匹配，与java不同的是，不用考虑'/'的转义问题
-        ```
+      正则表达式匹配，与java不同的是，不用考虑'/'的转义问题
+      ```
         Cheese( type matches "(Buffalo)?\\S*Mozarella" )
-        ```
+      ```
   - not matches
 
         和`matches`相反
