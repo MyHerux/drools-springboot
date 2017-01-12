@@ -33,6 +33,7 @@ public class RulesController {
         return rulesService.getRulesWrite(id, p);
     }
 
+
     @RequestMapping(value = "/getRule3", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public String getRule3(@RequestParam Integer id, @RequestParam String name) {
         try {
