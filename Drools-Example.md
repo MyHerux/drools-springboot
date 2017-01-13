@@ -71,5 +71,14 @@
     }
     ```
 - rule的执行顺序
+    ![](http://of0qa2hzs.bkt.clouddn.com/drools-uml@1-27.png)
 
 - 执行结果
+    ```
+    Hurrah!!! Democracy Lives
+    I'm an evil corporation and I have corrupted President of Umpa Lumpa
+    I'm an evil corporation and I have corrupted Prime Minster of Cheeseland
+    I'm an evil corporation and I have corrupted Tsar of Pringapopaloo
+    I'm an evil corporation and I have corrupted Omnipotence Om
+    We are all Doomed!!! Democracy is Dead
+    ```
