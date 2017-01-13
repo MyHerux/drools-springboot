@@ -8,6 +8,7 @@ rule "We have an honest Politician"
     when
         exists( Politician( honest == true ) )
     then
+        System.out.println("we have honest Politician");
         insertLogical( new Hope() );
 end
 
