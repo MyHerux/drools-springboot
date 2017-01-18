@@ -46,6 +46,7 @@ public class RulesController {
         return new JsonResponse(person);
     }
 
+
     @ApiOperation(value = "添加规则")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "rule", dataType = "String", required = true, value = "规则"),
