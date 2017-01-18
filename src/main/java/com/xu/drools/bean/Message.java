@@ -2,7 +2,7 @@ package com.xu.drools.bean;
 
 import java.io.Serializable;
 
-public class Message implements Serializable,BaseBean{
+public class Message implements Serializable{
     
     private static final long serialVersionUID = 1L;
 
@@ -16,8 +16,4 @@ public class Message implements Serializable,BaseBean{
         this.status = status;
     }
 
-    @Override
-    public String getOut() {
-        return status;
-    }
 }

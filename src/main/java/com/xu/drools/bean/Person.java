@@ -3,7 +3,7 @@ package com.xu.drools.bean;
 
 import java.io.Serializable;
 
-public class Person implements Serializable, BaseBean {
+public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -13,18 +13,15 @@ public class Person implements Serializable, BaseBean {
 
     private String desc;
 
+
+
+    public Person() {
+    }
+
     public Person(Integer age, String name, String desc) {
         this.age = age;
         this.name = name;
         this.desc = desc;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Integer getAge() {
@@ -35,6 +32,14 @@ public class Person implements Serializable, BaseBean {
         this.age = age;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDesc() {
         return desc;
     }
@@ -43,8 +48,4 @@ public class Person implements Serializable, BaseBean {
         this.desc = desc;
     }
 
-    @Override
-    public String getOut() {
-        return "{\"age\"=" + age + ",\"desc\"=" + desc + "}";
-    }
 }
