@@ -42,7 +42,9 @@ public class RulesController {
         Gson gson = new Gson();
         Person person = gson.fromJson(json, Person.class);
         kieSession.insert(person);
-        kieSession.fireAllRules();
+        int rules=kieSession.fireAllRules();
+        System.out.println(rules);
+        kieSession.dispose();
         return new JsonResponse(person);
     }
 
@@ -103,7 +105,7 @@ public class RulesController {
             @ApiImplicitParam(name = "name", dataType = "String", required = true, value = "规则名称")})
     @RequestMapping(value = "/ruleUpdate", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResponse ruleUpdate(@RequestParam String rule, @RequestParam Integer id, @RequestParam String name) {
-        return new JsonResponse(rulesDao.deleteRule(id, name, rule));
+        return new JsonResponse(rulesDao.updateRule(id, name, rule));
     }
 }
 

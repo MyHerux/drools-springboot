@@ -22,5 +22,5 @@ public interface RulesDao {
     Integer deleteRule(@Param("id") Integer id);
 
     @Update("UPDATE drools_rule SET rule= #{rule} AND name = #{name} WHERE id = #{id}")
-    Integer deleteRule(@Param("id") Integer id,@Param("name") String name,@Param("rule") String rule);
+    Integer updateRule(@Param("id") Integer id,@Param("name") String name,@Param("rule") String rule);
 }
