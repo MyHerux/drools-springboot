@@ -67,14 +67,14 @@ public class RulesController {
     @ApiOperation(value = "规则结果")
     @ApiImplicitParam(name = "id", dataType = "Integer", required = true, value = "规则编号")
     @RequestMapping(value = "/result", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResponse getResult(@RequestParam Integer id,@RequestParam String json) {
+    public JsonResponse getResult(@RequestParam Integer id, @RequestParam String json) {
         Gson gson = new Gson();
         Person person = gson.fromJson(json, Person.class);
         return new JsonResponse(rulesService.getRulesWrite(id, person));
     }
 
     @ApiOperation(value = "决策表转换")
-    @ApiImplicitParam(name = "file", dataType = "MultipartFile", required = true, value = "决策表xsl")
+    @ApiImplicitParam(name = "file", dataType = "MultipartFile", required = true, value = "决策表xls")
     @RequestMapping(value = "/getRuleXls", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResponse getRuleXls(@RequestParam(value = "file") MultipartFile file) throws IOException {
         InputStream inputStream = file.getInputStream();
@@ -82,11 +82,28 @@ public class RulesController {
         try {
             KieSession kieSession = rulesService.getKieSession(rule);
             kieSession.insert(new Person());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return new JsonResponse(e);
         }
         return new JsonResponse(rule);
+    }
+
+    @ApiOperation(value = "删除规则")
+    @ApiImplicitParam(name = "id", dataType = "Integer", required = true, value = "规则编号")
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResponse delete(@RequestParam Integer id) {
+        return new JsonResponse(rulesDao.deleteRule(id));
+    }
+
+    @ApiOperation(value = "修改规则")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "rule", dataType = "String", required = true, value = "规则"),
+            @ApiImplicitParam(name = "id", dataType = "Integer", required = true, value = "规则id"),
+            @ApiImplicitParam(name = "name", dataType = "String", required = true, value = "规则名称")})
+    @RequestMapping(value = "/ruleUpdate", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResponse ruleUpdate(@RequestParam String rule, @RequestParam Integer id, @RequestParam String name) {
+        return new JsonResponse(rulesDao.deleteRule(id, name, rule));
     }
 }
 
