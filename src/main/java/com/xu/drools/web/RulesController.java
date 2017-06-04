@@ -33,11 +33,9 @@ public class RulesController {
     private RulesDao rulesDao;
 
     @ApiOperation(value = "验证规则是否合法")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "rule", dataType = "String", required = true, value = "规则"),
-            @ApiImplicitParam(name = "json", dataType = "String", required = true, value = "对象数据")})
     @RequestMapping(value = "/verify", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResponse ruleVerify(@RequestParam String rule, @RequestParam String json) {
+    public JsonResponse ruleVerify(@RequestParam(value = "rule") String rule,
+                                   @RequestParam(value = "data") String json) {
         KieSession kieSession = rulesService.getKieSession(rule);
         Gson gson = new Gson();
         Person person = gson.fromJson(json, Person.class);
