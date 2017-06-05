@@ -21,6 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Drools的基本用法，动态规则+决策表
+ */
 @RequestMapping(value = "/rules")
 @RestController
 public class RulesController {

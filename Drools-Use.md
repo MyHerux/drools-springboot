@@ -27,6 +27,7 @@
     Person person = gson.fromJson(json, Person.class);
     kieSession.insert(person);
     kieSession.fireAllRules();
+    kieSession.dispose();
 ```
 
 ### 决策表

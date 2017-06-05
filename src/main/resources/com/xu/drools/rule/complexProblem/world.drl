@@ -1,0 +1,12 @@
+package com.xu.drools
+
+import com.xu.drools.bean.Student;
+
+
+rule "find world"
+    when
+        $jia : Student(name == "jia")
+
+    then
+        System.out.println($jia.toString());
+end

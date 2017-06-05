@@ -8,7 +8,8 @@ import org.kie.api.runtime.rule.QueryResults;
 import org.kie.api.runtime.rule.QueryResultsRow;
 
 /**
- * Created by xu on 2017/1/11.
+ * 使用kmodule的方式调用drools
+ * /resources/META-INF/kmodule.xml
  */
 public class rule2 {
 
@@ -29,14 +30,14 @@ public class rule2 {
 
         ksession.fireAllRules();
 
-        QueryResults results = ksession.getQueryResults( "people2" );
-        System.out.println( "we have " + results.size() + " people over the age  of 30" );
+        QueryResults results = ksession.getQueryResults("people2");
+        System.out.println("we have " + results.size() + " people over the age  of 30");
 
-        System.out.println( "These people are are over 30:" );
+        System.out.println("These people are are over 30:");
 
-        for ( QueryResultsRow row : results ) {
-            Person person = ( Person ) row.get( "person" );
-            System.out.println( person.getName() + "\n" );
+        for (QueryResultsRow row : results) {
+            Person person = (Person) row.get("person");
+            System.out.println(person.getName() + "\n");
         }
 
         ksession.dispose();

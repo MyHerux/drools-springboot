@@ -10,6 +10,14 @@
         <ksession name="rule2KS"/>
     </kbase>
 
+    <kbase name="mingKB" packages="com.xu.drools.rule.complexProblem">
+        <ksession name="mingKS"/>
+    </kbase>
+
+    <kbase name="worldKB" packages="com.xu.drools.rule.complexProblem">
+        <ksession name="worldKS"/>
+    </kbase>
+
     <kbase name="HonestPoliticianKB" packages="com.xu.drools.rule.honestpolitician">
         <ksession name="HonestPoliticianKS"/>
     </kbase>
