@@ -2,6 +2,17 @@
 
 ### Honest Politician
 
+- 使用kmodule的方式调用drools
+    创建文件：/resources/META-INF/kmodule.xml
+    ```
+    <?xml version="1.0" encoding="UTF-8"?>
+    <kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.drools.org/xsd/kmodule">
+        <kbase name="HonestPoliticianKB" packages="com.xu.drools.rule.honestpolitician">
+            <ksession name="HonestPoliticianKS"/>
+        </kbase>
+    </kmodule>
+    ```
 - rule
     ```
     package com.xu.drools                 //package指定命名空间:com.xu.drools

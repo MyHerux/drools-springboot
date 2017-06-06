@@ -1,0 +1,46 @@
+package com.xu.drools
+
+import com.xu.drools.bean.Golfer;
+
+rule "find solution"
+    when
+        //1.高尔夫球员Fred,目前不知道他的位置和衣服颜色
+        $fred : Golfer( name == "Fred" )
+
+        //3.Joe排在第2个位置
+        $joe : Golfer( name == "Joe",
+                position == 2,
+                position != $fred.position,
+                color != $fred.color )
+
+        //4.Bob穿着格子短裤
+        $bob : Golfer( name == "Bob",
+                position != $fred.position,
+                position != $joe.position,
+                color == "plaid",
+                color != $fred.color,
+                color != $joe.color )
+
+        //5.Tom没有排在第1位或第4位，也没有穿橙色衣服
+        $tom : Golfer( name == "Tom",
+                position != 1,
+                position != 4,
+                position != $fred.position,
+                position != $joe.position,
+                position != $bob.position,
+                color != "orange",
+                color != $fred.color,
+                color != $joe.color,
+                color != $bob.color )
+
+        //2.Fred右边紧挨着的球员穿蓝色衣服
+        Golfer( position == ( $fred.position + 1 ),
+                      color == "blue",
+                      this in ( $joe, $bob, $tom ) )
+
+    then
+        System.out.println( "Fred " + $fred.getPosition() + " " + $fred.getColor() );
+        System.out.println( "Joe " + $joe.getPosition() + " " + $joe.getColor() );
+        System.out.println( "Bob " + $bob.getPosition() + " " + $bob.getColor() );
+        System.out.println( "Tom " + $tom.getPosition() + " " + $tom.getColor() );
+end
