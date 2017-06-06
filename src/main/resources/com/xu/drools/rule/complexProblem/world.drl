@@ -1,12 +1,63 @@
 package com.xu.drools
 
 import com.xu.drools.bean.Student;
+import com.xu.drools.bean.World
 
-
-rule "find world"
+rule "find jia1"
+    salience 2
     when
-        $jia : Student(name == "jia")
-
+        $jia1 : Student(name == "jia",word1=="A",word2=="C",desc1=="2",desc2!="3")
     then
-        System.out.println($jia.toString());
+        insert( new World($jia1.getDesc1(),0,$jia1.getDesc2()) );
 end
+
+rule "find jia2"
+    salience 2
+    when
+        $jia2 : Student(name == "jia",word1=="A",word2=="C",desc1!="2",desc2=="3")
+    then
+        insert( new World($jia2.getDesc1(),0,$jia2.getDesc2()) );
+end
+
+rule "find yi1"
+    salience 3
+    when
+        $yi1 : Student(name == "yi",word1=="A",word2=="B",desc1=="1",desc2!="3");
+        $w : World(a==$yi1.getDesc1())
+    then
+        $w.setB($yi1.getDesc2());
+        update($w)
+end
+
+rule "find yi2"
+    salience 3
+    when
+        $yi2 : Student(name == "yi",word1=="A",word2=="B",desc1=="1",desc2!="3")
+        $w : World(a==$yi2.getDesc1())
+    then
+        $w.setB($yi2.getDesc2());
+        update($w)
+end
+
+
+rule "find bing1"
+    salience 4
+    when
+        $bing1 : Student(name == "bing",word1=="A",word2=="B",desc1=="3",desc2!="2")
+        $w : World(a==$bing1.getDesc1(),b==$bing1.getDesc2())
+    then
+        System.out.println("-------"+$w.toString());
+end
+
+
+rule "find bing2"
+    salience 4
+    when
+        $bing2 : Student(name == "bing",word1=="A",word2=="B",desc1!="3",desc2=="2")
+        $w : World(a==$bing2.getDesc1(),b==$bing2.getDesc2())
+    then
+        System.out.println("-------"+$w.toString());
+end
+
+
+
