@@ -50,5 +50,5 @@
    - Drools动态规则与决策表
    [Drools-Use](https://github.com/MyHerux/drools-springboot/blob/master/Drools-Use.md)
 
-   - Drools动态规则与决策表
-   [Drools-Use](https://github.com/MyHerux/drools-springboot/blob/master/Drools-ComplexProblem.md)
+   - Drools解决复杂逻辑问题
+   [Drools-ComplexProblem](https://github.com/MyHerux/drools-springboot/blob/master/Drools-ComplexProblem.md)
