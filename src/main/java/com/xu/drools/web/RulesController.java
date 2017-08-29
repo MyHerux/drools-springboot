@@ -35,7 +35,7 @@ public class RulesController {
     @Autowired
     private RulesDao rulesDao;
 
-    @ApiOperation(value = "验证规则是否合法")
+    @ApiOperation(value = "验证规则是否合法",notes = verify)
     @RequestMapping(value = "/verify", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResponse ruleVerify(@RequestParam(value = "rule") String rule,
                                    @RequestParam(value = "data") String json) {
@@ -68,9 +68,8 @@ public class RulesController {
 
 
     @ApiOperation(value = "规则结果")
-    @ApiImplicitParam(name = "id", dataType = "Integer", required = true, value = "规则编号")
     @RequestMapping(value = "/result", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResponse getResult(@RequestParam Integer id, @RequestParam String json) {
+    public JsonResponse getResult(@RequestParam("id") Integer id, @RequestParam("json") String json) {
         Gson gson = new Gson();
         Person person = gson.fromJson(json, Person.class);
         return new JsonResponse(rulesService.getRulesWrite(id, person));
@@ -108,5 +107,20 @@ public class RulesController {
     public JsonResponse ruleUpdate(@RequestParam String rule, @RequestParam Integer id, @RequestParam String name) {
         return new JsonResponse(rulesDao.updateRule(id, name, rule));
     }
+
+    private final static String verify="规则：package com.xu.drools;\n" +
+            "import com.xu.drools.bean.Person;\n" +
+            "rule \"2\"\n" +
+            "\twhen\n" +
+            "        $p : Person(age < 30);\n" +
+            "    then\n" +
+            "\t\tSystem.out.println(\"hello, young xu2!\");\n" +
+            "\t\t$p.setDesc(\"young \"+$p.getName());\n" +
+            "\t\tretract($p)\n" +
+            "end"+"   数据实体：{\n" +
+            "    \"age\":18,\n" +
+            "    \"name\":\"xu\",\n" +
+            "    \"desc\":\"帅\"\n" +
+            "}";
 }
 
