@@ -115,7 +115,7 @@ public class JsonHandlerExceptionResolver implements HandlerExceptionResolver {
 
         for (StackTraceElement element : elements) {
             String className = element.getClassName();
-            if (className != null && className.startsWith("com.icekredit")) {
+            if (className != null) {
                 builder.append("\t");
                 builder.append(element.getClassName());
                 builder.append("#");
