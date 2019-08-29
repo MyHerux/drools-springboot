@@ -82,7 +82,7 @@
     }
     ```
 - rule的执行顺序
-    ![](http://of0qa2hzs.bkt.clouddn.com/drools-uml@1-27.png)
+    ![](http://cdn.heroxu.com/drools-uml@1-27.png)
 
 - 执行结果
     ```
